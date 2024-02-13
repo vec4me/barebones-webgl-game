@@ -1,6 +1,8 @@
-<script>'use strict'
+<script>
+'use strict'
 const map_model_source = `# doom.wad, map E1M1
 # Created by GZDoom Builder 2.3.0.2787
+
 o E1M1
 v -1984 24 -3648
 v -1984 64 -3648
@@ -3290,7 +3292,7 @@ f 936/667/112 531/639/112 528/640/112 937/668/112
 const debug = {}
 {
 	debug.log = console.log
-	debug.benchmark = function(name) {
+	debug.profile_begin = function(name) {
 		const self = {}
 		const t0 = performance.now()
 		self.end = function() {
@@ -3349,13 +3351,13 @@ const model = {}
 		}
 	}
 	model.construct = function(source) {
-		const timer = debug.benchmark('construct model')
+		const profile = debug.profile_begin('construct model')
 		const lines = source.split('\n')
 		for (const i in lines) {
 			const values = lines[i].split(' ')
 			definitions[values[0]](values.splice(1))
 		}
-		timer.end()
+		profile.end()
 		return build
 	}
 }
@@ -3381,7 +3383,7 @@ const gpu = {}
 			premultipliedAlpha: false,
 			preserveDrawingBuffer: true
 		})
-		if (gl === null) {
+		if (!gl) {
 			debug.log('failed to initialize context')
 		}
 		return gl
@@ -3391,7 +3393,7 @@ const gpu = {}
 		const id = gl.createShader(type)
 		gl.shaderSource(id, source)
 		gl.compileShader(id)
-		if (gl.getShaderParameter(id, gl.COMPILE_STATUS) === null) {
+		if (!gl.getShaderParameter(id, gl.COMPILE_STATUS)) {
 			debug.log(gl.getShaderInfoLog(id))
 		}
 		self.get_id = function() {
@@ -3407,7 +3409,7 @@ const gpu = {}
 		gl.attachShader(id, vertex_shader_id)
 		gl.attachShader(id, fragment_shader_id)
 		gl.linkProgram(id)
-		if (gl.getProgramParameter(id, gl.LINK_STATUS) === null) {
+		if (!gl.getProgramParameter(id, gl.LINK_STATUS)) {
 			debug.log(gl.getProgramInfoLog(id))
 		}
 		self.use = function() {
@@ -3490,9 +3492,9 @@ const audio_player = {}
 		//source.loop = true
 		source.play()
 	}
-	const meat_image = 'data:image/jpg;base64,/9j/4AAQSkZJRgABAgA1yjaRAAD//gARTGF2YzU4LjEzNC4xMDAA/9sAQwAIBAQEBAQFBQUFBQUGBgYGBgYGBgYGBgYGBwcHCAgIBwcHBgYHBwgICAgJCQkICAgICQkKCgoMDAsLDg4OEREU/8QAjAAAAwEBAQAAAAAAAAAAAAAABgUDBAABAQADAQEBAAAAAAAAAAAAAAACAQMEAAUQAAICAgEEAgIBBQADAQAAAAIBAwQFERITIQAGIhQxQQcyYRWBI3JRQxYRAAIBAwIEAwYEBwEAAAAAAAECEQAhAxIxQQRhURMigeFxkbHxMqFS0TMjFEKS8HJjYv/AABEIAC0APQMBIgACEgADEgD/2gAMAwEAAhEDEQA/AK/yj7R7L7DkAzGKx8UZxxUY5a8zdj6pcbDmCObqDHIyDQkARgepgIU2n4tr/wAgU5bgXGLp0qsgDc6M6PXU+IkCMAb4miTRimP9/LZvKQfTNnXrO/YcBwly+ssn9dxcgKwgYxTJbQdR6/CTQvxcfr2FlYFWrfT20giJmJS8nuQZXyNmW0ti97fnlZtPNl8w1eZmse1tMda7BKoAxOmft93GvQwqcIx4ntHreb+lC7asmrj0o3DN46KurfVGwIBHPGKPj1BkkQBs2LAWt90T3oW1vxTmfcMxPYlnL79WjJFHx+nNLHWAYzLQmLPkyaX/AEkUaEv6lrT8GJPZv8FlKmAEQghIXblBk5GGpOIQ/PYgRJGetLtpdt68eehy4/2jLe0ep5QxkIArWvWpLRMOpBUb51gJMGQcvhJrWxZfjwmY85kxNMDDiCzMeY7n+0Cn4MF2DFQQGHb7vZNdpPLLkxwC2TKTETYbD4k1zZy4FgSPLPGQLU1xH8m/yF65ibuS/wAEM+GrTuedznJzKAQ0/pMzEjIy05OAFx0Xx/fjz17+U7M+EiyHsAx2CnmkOKehVP6scXZoNlJyLgLT5a20/wB+KMj0s30lapRxXY1brU5mE9fcbIYrcJIpZoS4n02BoeQmPb9+KscstiK0kkCU1OEQhGGWN/AJWQshTERaQBptLS+P414RyvgTSn8RQTaNtzEzsKfLYlPHVpBaY9/UyQaQxoxknS9rzb5UnJtIjUQvy91FXsE+Kzjr5mjbCKRRmUMc0E0ascQUm+bDtGxaSm049vW/z4P4v+ZpLEDGtB9VRl3OI4zGff4fzMWuOn2Xbv5vwPWxOKtQHcKGEpZIenKQqlD1R+BI7HU6PWj2fTh1GS5ctdl4I5n0aphcjNBiq4VK0r+1GEkpzREM3dHWkRtOEmiYJPSWl4GvJkaVFt7g79rVo1YcPlSRq8xn7fSbT3FEcmhQDuLbjao5EdiSeFuvrUPcsnkhx2Jxd2NdeaoRDY0ii0UiCDmRJlGjGsHV21pnt+Tjyv3r6cVBIQkiiOUSgAoD1x+cfLrIWx2KIE+6bfhF7hXweTxlXLyQH1XMMMnTtaihhH+lOOTsKJRot6F8vz4CY68s57FFDjpS4zzhHNPGAkIuBGaKNNpkXSRCmaQlvvteY8SHw10sQCGkm8X227VTkgTiysfMqB7D/wA1o5gBcrwP6oH6/GnzpXxEVbFnAnb7j7a1+34mjTtU/YadSxmZuYBPXUnOOyMJPpyWgk1Z4lI4ufHQFprx3eg9k9gyvroXoL9PNSpDDP8AXUcWMrDILksRyxE4YQhAt8EkHJ8T/PeuUx9b/wDP5bH46KxZuNGVaxIROWx0OEpx8aw8ktD30kGlrSW/DC9n8djcDhqtrrFBZw1ivYmq7lsBaOsLUIiP/wBtBIYr+y35zvjCJLiYZVXbygf4KzZVbJ4SaZfVqUT7p+lSVWLNCncEnsa0uExEtMLETHRgPrSn2X2KWneoVKGwGjWtHXnbbsG/67ExctARyEOuy7Itre+21561LDhbsvStVAl55WCKJ8unYhmjnIYwWtQ8+qYkm/yQeC1yBQliL/2Ss4+UpooLssTArkBya64qXnxPluI0a4i++teEVnJ4qvRqWrZuSuVVVPrQz6kU7OxIU56+IxvnGLlQ8jHTWu3m3FgI5UKDpY4zt6mN+M0aF8mBGAurMGvwEgjjNZ2yKc0sJGsb/P0oCQMxE7iR/sbzWmtg8tJkxPB2KsOLq9IashkR9aQ4uCPv8JGCSZPlze2v35XNlRqzhVhmpkdcSCdAhYjKyZmlHp9PZkT4rQ7/AB4tuZfK2Hh69T7FmCrH1igA45EpUjjbEQXIWD20jLstfvzJiYKNmbIDcPIDKFlkvrkPBAS0gJnwbMWJcn+97/feVm5dVMm+qCJIkfrIquJVE6egk3tvG3WqN+7sdUQT6/SllY2m1ySBa5479K8yfr09yOaKKyEtIAn4UhbbkvRszSlMi4iDRIFGIlp8tku3gB6t6xn/AFjOmFh1IL0ZHJDDZlcaNRAXNREK7zED+EOtkP68LfbPbb/pN/HVqUUE2pLEZlL1EMsUJCLUgAa3KfLl1eXZ7+Pfzpcfi5/bcHk/qsYLcVyM6il2wlkpSHHYGchb6kLEuDKN7EtPyPLlf5fKotPlN533Pz+FDjx6Gsd1fh+QGPbT5sOmdGb7gdcR22qnNZvFDSIgqu/5t6nBFkbNuzFBJINyaQIiggJhMBkfMEKRCcXZMmXxeyW0/EWYkeWjmof5CyapFNGMF2VqYLAMwMeZbfVJJiy33T009eEpRDUyONtxMhmZ1isHtN2GxEURbXxMQPQmu6Y7/t4P+wU4ofbM5XljgMLQK5Eq8SqKtIHAtpRskZFr/oTS5vu15Xl8ao6gwxH2mBI4dpingOrPiP8AzK9LNUM+ds140jaLkd/jQv8AtMOzT+FPVlGPptHHjC69KErMspzSRT2FPc4ydgQhwrDImOkLXL99l5LBOWeqVx1prgwcY7PEERKKBaEy7tIpI10SLjtC/wB77JcFbnsXBVmSSwC4ogIuxAQkyDbT48ta7dtfrwowvO9gBuCZVgjuywhDE2uwyJbkPejb/wDBf7ffynLziR9TKQWc6thc7fGp84/ghQoESog3Fz2oXGt1IUggLbjb2VXlk8RpJM3uN7CnGHqum4splZ1TlkfVx9ffTXSIdknwS1JrS+Se3r9+aLfteNxEcFev6zDkk+rKTlFAUJFIxYtcW+TYNv8A9rT/AH4K5T2osfYphcrFkzv8nzksOIYEEMlgVHGMRL4vS7vXZbX683F7VLXYqKrG+UURF1pDkS5LkhjQ9NgK2+zZf68WRc+fIRi2G5mAenWBTXO6KAkKOw/WmCmNfMY7cT1/GhbGMhJa5t7q/9k='
-	const idk_sound = 'data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA/+MYZAADUD04AKEMAALwBmwBQAAA/5G/UjT0IRQAQwn/L4nPg/UcEgY/l3/hgoGP/l38Hy7/5R3Of4fV9RRmUEb5UYXdTikm/+MYZAwDyJGGAMKIAAXhLwQBghAAOKgocyCfncnKKO2g/+r5Ow9qft0+s5xrGHc+Yimh1G/elFan/3Gw/jYR0DLS7suUsq2L/+MYZAkD7ImAAOOUAASJEwABwhAAnHE2VKDHhASQ0T/28TI+owW/1CHW/V+//w7YjPUF5+n6fBv52/4c7qVi8MEJqC9geq0f/+MYZAoDvImCZAiiNgTI5vgACA4gEbYP4SbGv+3hP0DL/w/nux31fyfeXKV59Tsa+RPyj/QzxQ/iH5zoxML3i2ujPRXKPQS2/+MYZAwELJmAAKOIAAMAzwABQgAAQ+okc8Iy2r/VuYNC76W/1BJ+Cf/9H7f/bn1yeL6P+3gtakCZpgPn+7ONDh5H84VqGDSh/+MYZBEEbImCAMOUAAYorvwBhRAAca+tWCvmX8Y2I4/oLSX//8v9Ss3/YpxRjI/uH1BBVnDvvsgxc7rl75X/6IGZKCwkQ2K7/+MYZAgB8AcSAOGAAISgAhgBwgAA5eivyeCsHb/4ieCoCDgNAUFSyoKjDwNLDRZMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqq'
-	const easy_does_it = 'data:audio/mpeg;base64,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'
+	const meat_image = 'data:image/jpg;base64, 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'
+	const idk_sound = 'data:audio/mpeg;base64, SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA/+MYZAADUD04AKEMAALwBmwBQAAA/5G/UjT0IRQAQwn/L4nPg/UcEgY/l3/hgoGP/l38Hy7/5R3Of4fV9RRmUEb5UYXdTikm/+MYZAwDyJGGAMKIAAXhLwQBghAAOKgocyCfncnKKO2g/+r5Ow9qft0+s5xrGHc+Yimh1G/elFan/3Gw/jYR0DLS7suUsq2L/+MYZAkD7ImAAOOUAASJEwABwhAAnHE2VKDHhASQ0T/28TI+owW/1CHW/V+//w7YjPUF5+n6fBv52/4c7qVi8MEJqC9geq0f/+MYZAoDvImCZAiiNgTI5vgACA4gEbYP4SbGv+3hP0DL/w/nux31fyfeXKV59Tsa+RPyj/QzxQ/iH5zoxML3i2ujPRXKPQS2/+MYZAwELJmAAKOIAAMAzwABQgAAQ+okc8Iy2r/VuYNC76W/1BJ+Cf/9H7f/bn1yeL6P+3gtakCZpgPn+7ONDh5H84VqGDSh/+MYZBEEbImCAMOUAAYorvwBhRAAca+tWCvmX8Y2I4/oLSX//8v9Ss3/YpxRjI/uH1BBVnDvvsgxc7rl75X/6IGZKCwkQ2K7/+MYZAgB8AcSAOGAAISgAhgBwgAA5eivyeCsHb/4ieCoCDgNAUFSyoKjDwNLDRZMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqq'
+	const easy_does_it = 'data:audio/mpeg;base64, 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'
 	const pi = 3.1415927
 	const total_channels = 1
 	const duration = 0.5
@@ -3536,7 +3538,6 @@ const audio_player = {}
 			source.start()
 			*/
 			//play_audio_at_pitch(idk_sound, 1/440*frequency)
-			play_audio_at_pitch(soft_middle, 1/440*frequency)
 		}
 		const random = Math.random
 		const floor = Math.floor
@@ -3548,15 +3549,13 @@ const audio_player = {}
 		return self
 	}
 	{
-		const floor = Math.floor
-		const random = Math.random
-		function get_random_chord_progression(chords_count) {
+		function get_random_chord_progression(number_chords) {
 			const root_notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 			const chord_types = ['major', 'minor', 'diminished', 'augmented', 'sus2', 'sus4']
 			const progression = []
-			for (let i = 0; i < chords_count; i++) {
-				const random_root = root_notes[floor(random()*root_notes.length)]
-				const random_chord_type = chord_types[floor(random()*chord_types.length)]
+			for (let i = 0; i < number_chords; i++) {
+				const random_root = root_notes[Math.floor(Math.random() * root_notes.length)]
+				const random_chord_type = chord_types[Math.floor(Math.random() * chord_types.length)]
 				const chord = random_root + ' ' + random_chord_type
 				const notes = get_chord_notes(random_root, random_chord_type)
 				progression.push(...notes)
@@ -3592,15 +3591,15 @@ const audio_player = {}
 		// example usage
 		const progression = get_random_chord_progression(4) // generate a progression of 4 chords
 	}
-	const soft_middle = 'data:audio/mpeg;base64,SUQzBAAAAAADNVRJVDIAAAAgAAADQyA0NDAgVHVuaW5nIE5vdGUgKDEwIG1pbnV0ZXMpAFRYWFgAAAAyAAADUFVSTABodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PTVPWmFjMFkxTGFzAFRYWFgAAAA1AAADQ09NTUVOVABodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PTVPWmFjMFkxTGFzAFRYWFgAAAAgAAADQ09NUEFUSUJMRV9CUkFORFMAaXNvNmF2YzFtcDQxAFRYWFgAAAASAAADTUFKT1JfQlJBTkQAZGFzaABUWFhYAAAAEQAAA01JTk9SX1ZFUlNJT04AMABUUEUxAAAAEwAAA1RoZSBXaXNlIE11c2ljaWFuAFREUkMAAAAKAAADMjAyMTExMjYAVFhYWAAAACUAAANERVNDUklQVElPTgBDIDQ0MGh6IGRyb25lIHRvbmUgKEM0KQBUWFhYAAAAIgAAA1NZTk9QU0lTAEMgNDQwaHogZHJvbmUgdG9uZSAoQzQpAFRTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA/+MYZAADPAB4BKAAAAOQANhJQAAAh//wws///4neHyjg+XPlDk5+Jz4PwQcUcD4MQ////+o4UcJ33//7yir///TcJwj/0//8/+MYZAoEdNNeAMa0AAPoBgABgBAAwJRt///EYHhQaE4GP///jBnlzMvm//8u/If/+39SLf5Yl////7rGSQlq//qEuJwTeYNv/+MYZAkEzJ14AMOoAAPQBbgBgAAAXv2Jm6kPxl84t6goGZbyAIRHfwqCblPX5bVqy/1//Ulvut/Gf//9M1iFtX9F//YJwLo0/+MYZAYEgKtsAMUoAAMwBcRRgBAC/y4+KjD/FUsqmnf/oTTSgzAmAu//8hNZ1Hph3/4dAAggAA//////9v//qUxBTUUzLjEw/+MYZAgAAAGkAOAAAAAAA0gBwAAAMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV'
-	const drum = 'data:audio/mpeg;base64,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'
-	audio_player.create()
+	const soft_middle = 'data:audio/mpeg;base64, SUQzBAAAAAADNVRJVDIAAAAgAAADQyA0NDAgVHVuaW5nIE5vdGUgKDEwIG1pbnV0ZXMpAFRYWFgAAAAyAAADUFVSTABodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PTVPWmFjMFkxTGFzAFRYWFgAAAA1AAADQ09NTUVOVABodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PTVPWmFjMFkxTGFzAFRYWFgAAAAgAAADQ09NUEFUSUJMRV9CUkFORFMAaXNvNmF2YzFtcDQxAFRYWFgAAAASAAADTUFKT1JfQlJBTkQAZGFzaABUWFhYAAAAEQAAA01JTk9SX1ZFUlNJT04AMABUUEUxAAAAEwAAA1RoZSBXaXNlIE11c2ljaWFuAFREUkMAAAAKAAADMjAyMTExMjYAVFhYWAAAACUAAANERVNDUklQVElPTgBDIDQ0MGh6IGRyb25lIHRvbmUgKEM0KQBUWFhYAAAAIgAAA1NZTk9QU0lTAEMgNDQwaHogZHJvbmUgdG9uZSAoQzQpAFRTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA/+MYZAADPAB4BKAAAAOQANhJQAAAh//wws///4neHyjg+XPlDk5+Jz4PwQcUcD4MQ////+o4UcJ33//7yir///TcJwj/0//8/+MYZAoEdNNeAMa0AAPoBgABgBAAwJRt///EYHhQaE4GP///jBnlzMvm//8u/If/+39SLf5Yl////7rGSQlq//qEuJwTeYNv/+MYZAkEzJ14AMOoAAPQBbgBgAAAXv2Jm6kPxl84t6goGZbyAIRHfwqCblPX5bVqy/1//Ulvut/Gf//9M1iFtX9F//YJwLo0/+MYZAYEgKtsAMUoAAMwBcRRgBAC/y4+KjD/FUsqmnf/oTTSgzAmAu//8hNZ1Hph3/4dAAggAA//////9v//qUxBTUUzLjEw/+MYZAgAAAGkAOAAAAAAA0gBwAAAMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV'
+	const drum = 'data:audio/mpeg;base64, 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'
+	//audio_player.create()
 	/*
 	{
 		let i = 0
 		setInterval(function() {
 			const key = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'][i%12]
-			play_audio_at_pitch(drum, 1/440*note_to_frequency(key + (3 + floor(i/12)%4)))
+			play_audio_at_pitch(drum, 1/440*note_to_frequency(key + (3 + Math.floor(i/12)%4)))
 			++i;
 		}, 500)
 	}
@@ -3625,6 +3624,134 @@ const audio_player = {}
 	}
 	play_audio_at_pitch(easy_does_it, 0.2)
 	*/
+}
+const vec3 = {}
+{
+	const sqrt = Math.sqrt
+	const create = function(x, y, z) {
+		const self = {}
+		self.copy = function() {
+			return create(x, y, z)
+		}
+		self.dump = function() {
+			return [x, y, z]
+		}
+		self.dot = function(b) {
+			return x*bx + y*by + z*bz
+		}
+		self.cross = function(b) {
+			return new(
+				y*bz - z*by,
+				z*bx - x*bz,
+				x*by - y*bx
+			)
+		}
+		self.get_square = function() {
+			return x*x + y*y + z*z
+		}
+		self.get_length = function() {
+			return sqrt(x*x + y*y + z*z)
+		}
+		self.protected_unitize = function() {
+			const l = sqrt(x*x + y*y + z*z)
+			x /= l
+			y /= l
+			z /= l
+			return self
+		}
+		self.unitize = function() {
+			const l = sqrt(x*x + y*y + z*z)
+			if (l > 0) {
+				x /= l
+				y /= l
+				z /= l
+			}
+			else {
+				x = 0
+				y = 0
+				z = 0
+			}
+			return self
+		}
+		/*
+		self.multiply_inverse_quaternion = function(q) {
+			const [x, y, z, w] = q.dump_diagonal()
+			const x1 = i*(1 - y*y - z*z) + j*(x*y + w*z) + k*(x*z - w*y)
+			const y1 = i*(x*y - w*z) + j*(1 - x*x - z*z) + k*(y*z + w*x)
+			const z1 = i*(x*z + w*y) + j*(y*z - w*x) + k*(1 - x*x - y*y)
+			x = x1
+			y = y1
+			z = z1
+			return self
+		}
+		*/
+		self.add_float = function(b) {
+			x += b
+			y += b
+			z += b
+			return self
+		}
+		self.add_vec3 = function(b) {
+			const [bx, by, bz] = b.dump()
+			x += bx
+			y += by
+			z += bz
+			return self
+		}
+		self.subtract_float = function(b) {
+			x -= b
+			y -= b
+			z -= b
+			return self
+		}
+		self.subtract_vec3 = function() {
+			const [bx, by, bz] = b.dump()
+			x -= bx
+			y -= by
+			z -= bz
+			return self
+		}
+		self.multiply_float = function(r) {
+			x *= r
+			y *= r
+			z *= r
+			return self
+		}
+		self.multiply_mat3 = function(r) {
+			const [xx, yx, zx, xy, yy, zy, xz, yz, zz] = r.dump()
+			x = xx*x + yx*y + zx*z
+			y = xy*x + yy*y + zy*z
+			z = xz*x + yz*y + zz*z
+			return self
+		}
+		self.multiply_quaternion = function(r) {
+			const [b, c, d, a] = r.dump_diagonal()
+			const x1 = x*(1 - c*c - d*d) + y*(b*c - a*d) + z*(b*d + a*c)
+			const y1 = x*(b*c + a*d) + y*(1 - b*b - d*d) + z*(c*d - a*b)
+			const z1 = x*(b*d - a*c) + y*(c*d + a*b) + z*(1 - b*b - c*c)
+			x = x1
+			y = y1
+			z = z1
+			return self
+		}
+		self.divide_float = function(b) {
+			x /= b
+			y /= b
+			z /= b
+			return self
+		}
+		self.divide_vec3 = function(b) {
+			const [bx, by, bz] = b.dump()
+			x /= bx
+			y /= by
+			z /= bz
+			return self
+		}
+		return self
+	}
+	const zero = create(0, 0, 0)
+	vec3.zero = zero
+	vec3.create = create
 }
 const signal = {}
 {
@@ -3665,7 +3792,7 @@ const vec4 = {}
 			return sqrt(x*x + y*y + z*z + w*w)
 		}
 		self.dot = function(b) {
-			const [bx, by, bz, bw] = b.dump()
+			let [bx, by, bz, bw] = b.dump()
 			return x*bx + y*by + z*bz + w*bw
 		}
 		self.conjugate = function() {
@@ -3677,11 +3804,7 @@ const vec4 = {}
 		self.dump_diagonal = function() {
 			return [hyp*x, hyp*y, hyp*z, hyp*w]
 		}
-		self.cross_imaginary = function(b) {
-			const [bx, by, bz, bw] = b.dump()
-			return vec3.new(y*bz - z*by, z*bx - x*bz, x*by - y*bx)
-		}
-		self.transform = function(b) {
+		self.quaternion_multiply = function(b) {
 			const [bx, by, bz, bw] = b.dump()
 			const x1 = w*bx + x*bw + y*bz - z*by
 			const y1 = w*by - x*bz + y*bw + z*bx
@@ -3714,41 +3837,35 @@ const vec4 = {}
 		}
 		self.slerp = function(b, n) {
 			if (self.dot(b) < 0) {
-				self.transform(b.copy().transform(self.copy().negate().conjugate()).exponentiate(n))
+				self.quaternion_multiply(b.copy().quaternion_multiply(self.copy().negate().conjugate()).exponentiate(n))
 			}
 			else {
-				self.transform(b.copy().transform(self.copy().conjugate()).exponentiate(n))
+				self.quaternion_multiply(b.copy().quaternion_multiply(self.copy().conjugate()).exponentiate(n))
 			}
-			return self
-		}
-		self.add = function(b) {
-			const [bx, by, bz, bw] = b.dump()
-			x += bx
-			y += by
-			z += bz
-			w += bw
-			return self
-		}
-		self.multiply_float = function(r) {
-			x *= r
-			y *= r
-			z *= r
-			w *= r
 			return self
 		}
 		return self
 	}
-	vec4.create = create
 	const hyp = 1.41421356
 	const tau = 6.28318531
-	vec4.euler_angles_x2 = function(t) {
-		return vec4.create(sin(t), 0, 0, cos(t))
+	const identity = create(0, 0, 0, 1)
+	const euler_angles_x2 = function(t) {
+		x = 0
+		y = sin(t)
+		z = 0
+		w = cos(t)
 	}
-	vec4.euler_angles_y2 = function(t) {
-		return vec4.create(0, sin(t), 0, cos(t))
+	const euler_angles_y2 = function(t) {
+		x = 0
+		y = 0
+		z = sin(t)
+		w = cos(t)
 	}
-	vec4.euler_angles_z2 = function(t) {
-		return vec4.create(0, 0, sin(t), cos(t))
+	const euler_angles_z2 = function(t) {
+		x = sin(t)
+		y = 0
+		z = 0
+		w = cos(t)
 	}
 	const mat = function(m) {
 		const [xx, yx, zx, xy, yy, zy, xz, yz, zz] = m.dump()
@@ -3782,7 +3899,7 @@ const vec4 = {}
 		}
 	}
 	const look = function(b) {
-		const [bx, by, bz, bw] = b.dump()
+		const [bx, by, bz] = b.dump()
 		hyp*(y*bz - z*by)
 		hyp*(z*bx - x*bz)
 		hyp*(x*by - y*bz)
@@ -3808,17 +3925,128 @@ const vec4 = {}
 			m0*cos(a0)
 		)
 	}
-	vec4.from_axis_angle = function(x, y, z) {
-		const l = sqrt(x*x + y*y + z*z)
-		const s = sin(0.5*l)
-		if (l > 0) {
-			return vec4.create(s*x/l, s*y/l, s*z/l, cos(0.5*l))
+	vec4.zero = create(0, 0, 0, 0)
+	vec4.one = create(1, 1, 1, 1)
+	vec4.create = create
+}
+/*
+{
+	const quaternion = {}
+	const create = function(x, y, z, w) {
+		const self = {}
+		return self
+	}
+	self.dump_diagonal = function() {
+		return [hyp*x, hyp*y, hyp*z, hyp*w]
+	}
+	const hyp = 1.41421356
+	const tau = 6.28318531
+	const identity = create(0, 0, 0, 1)
+	const slerp = function(a, b, n) {
+		const bx, by, bz, bw = b.dump()
+		if (x*bx + y*by + z*bz + w*bw < 0) {
+			x = -x
+			y = -y
+			z = -z
+			w = -w
+		}
+		const x = w*bx - x*bw + y*bz - z*by
+		const y = w*by - x*bz - y*bw + z*bx
+		const z = w*bz + x*by - y*bx - z*bw
+		const w = w*bw + x*bx + y*by + z*bz
+		const t = n*acos(w)
+		const s = sin(t)/sqrt(x*x + y*y + z*z)
+		bx = s*x
+		by = s*y
+		bz = s*z
+		bw = cos(t)
+		const x1 = w*bx + x*bw - y*bz + z*by
+		const y1 = w*by + x*bz + y*bw - z*bx
+		const z1 = w*bz - x*by + y*bx + z*bw
+		const w1 = w*bw - x*bx - y*by - z*bz
+		x = x1
+		y = y1
+		z = z1
+		w = w1
+	}
+	const euler_angles_x2 = function(t) {
+		x = 0
+		y = sin(t)
+		z = 0
+		w = cos(t)
+	}
+	const euler_angles_y2 = function(t) {
+		x = 0
+		y = 0
+		z = sin(t)
+		w = cos(t)
+	}
+	const euler_angles_z2 = function(t) {
+		x = sin(t)
+		y = 0
+		z = 0
+		w = cos(t)
+	}
+	const mat = function(m) {
+		const [xx, yx, zx, xy, yy, zy, xz, yz, zz] = m.dump()
+		if (xx + yy + zz > 0) {
+			const s = 0.5/sqrt(1 + xx + yy + zz)
+			x = s*(xy - yx)
+			y = s*(yz - zy)
+			z = s*(zx - xz)
+			w = 0.25/s
+		}
+		else if (xx > yy && xx > zz) {
+			const s = 0.5/sqrt(1 + xx - yy - zz)
+			x = s*(zx + xz)
+			y = 0.25/s
+			z = s*(yx + xy)
+			w = s*(yz - zy)
+		}
+		else if (yy > zz) {
+			const s = 0.5/sqrt(1 - xx + yy - zz)
+			x = s*(zy + yz)
+			y = s*(yx + xy)
+			z = 0.25/s
+			w = s*(zx - xz)
 		}
 		else {
-			return vec4.create(0, 0, 0, 1)
+			const s = 0.5/sqrt(1 - xx - yy + zz)
+			x = 0.25/s
+			y = s*(zx + xz)
+			z = s*(zy + yz)
+			w = s*(xy - yx)
 		}
 	}
+	const look = function(b) {
+		const [bx, by, bz] = b.dump()
+		hyp*(y*bz - z*by)
+		hyp*(z*bx - x*bz)
+		hyp*(x*by - y*bz)
+		hyp
+	}
+	const axis_angle = function(v) {
+		const [x, y, z] = v.dump()
+		const l = sqrt(x*x + y*y + z*z)
+		const s = sin(0.5*l)
+		s*z/l, s*x/l, s*y/l, cos(0.5*l)
+	}
+	vec4.random = function() {
+		const l0 = log(1 - random())
+		const l1 = log(1 - random())
+		const a0 = tau*random()
+		const a1 = tau*random()
+		const m0 = sqrt(l0/(l0 + l1))
+		const m1 = sqrt(l1/(l0 + l1))
+		create(
+			m1*sin(a1),
+			m0*sin(a0),
+			m1*cos(a1),
+			m0*cos(a0)
+		)
+	}
 }
+*/
 const mat4 = {}
 {
 	const create = function(xx, yx, zx, wx, xy, yy, zy, wy, xz, yz, zz, wz, xw, yw, zw, ww) {
@@ -3852,31 +4080,32 @@ const mat4 = {}
 			0, 0, -1, 0
 		)
 	}
-	mat4.from_quaternion = function(q) {
-		const [x, y, z, w] = q.dump_diagonal()
-		return [w*w + x*x - 1, x*y - z*w, x*z + y*w, x*y + z*w, w*w + y*y - 1, y*z - x*w, x*z - y*w, y*z + x*w, w*w + z*z - 1]
-	}
 	mat4.create = create
 }
-{
+if (false) {
 	const random = Math.random
 	const sqrt = Math.sqrt
 	const cos = Math.cos
 	const sin = Math.sin
-	const vertex_source = `#version 300 es
+	const vertex_source = `
 		precision lowp float;
-		precision lowp int;
-		flat out int vertex_index;
-		in vec2 tex;
-		in vec3 normal;
-		in vec3 vertex;
-		out vec2 tex_world;
-		out vec3 normal_world;
-		out vec3 vertex_relative;
-		out vec3 vertex_world;
+		vec3 multiply_quaternion(vec4 q, vec3 p) {
+			vec3 t = 2.0*cross(q.xyz, p);
+			return p + q.w*t + cross(q.xyz, t);
+		}
+		vec4 conjugate(vec4 q) {
+			return vec4(-q.xyz, q.w);
+		}
+		attribute vec2 tex;
+		attribute vec3 normal;
+		attribute vec3 vertex;
 		uniform mat4 frustum;
-		uniform vec4 camera_position;
+		uniform vec3 camera_position;
 		uniform vec4 camera_rotation;
+		varying vec2 tex_world;
+		varying vec3 normal_world;
+		varying vec3 vertex_relative;
+		varying vec3 vertex_world;
 		/*
 		const float n = 0.1;
 		const float f = 1000.0;
@@ -3887,53 +4116,31 @@ const mat4 = {}
 			0.0, 0.0, 2.0*n*f/(n - f), 0.0
 		);
 		*/
-		vec3 transform(vec4 q, vec3 p) {
-			vec3 t = 2.0*cross(q.xyz, p);
-			return p + q.w*t + cross(q.xyz, t);
-		}
-		vec4 conjugate(vec4 q) {
-			return vec4(-q.xyz, q.w);
-		}
 		void main() {
 			vertex_world = vertex;
 			tex_world = tex;
 			normal_world = normal;
-			vertex_relative = transform(conjugate(camera_rotation), vertex - camera_position.xyz);
+			vertex_relative = multiply_quaternion(conjugate(camera_rotation), vertex - camera_position);
 			gl_Position = frustum*vec4(vertex_relative, 1);
-			vertex_index = gl_VertexID;
 		}
 	`
-	const fragment_source = `#version 300 es
+	const fragment_source = `
 		precision lowp float;
-		precision lowp int;
-		flat in int vertex_index;
-		in vec2 tex_world;
-		in vec3 normal_world;
-		in vec3 vertex_relative;
-		in vec3 vertex_world;
-		out vec4 fragment_color;
-		float random(vec2 c) {
-			return fract(sin(dot(c, vec2(12.9898, 78.233)))*43758.5453);
-		}
+		varying vec2 tex_world;
+		varying vec3 normal_world;
+		varying vec3 vertex_relative;
+		varying vec3 vertex_world;
 		void main() {
-			float lightness = dot(tex_world, tex_world);
-			//color = vec4(sin(20.0*lightness + float(vertex_index)), 0, 0, 1);
-			//fragment_color = vec4(1, 0, 0, 1);
-			//float variability = 0.5 + 0.2*fract(0.65446*float(vertex_index));
-			vec3 albedo = vec3(
-				random(vec2(float(vertex_index), 0)),
-				random(vec2(float(vertex_index), 1)),
-				random(vec2(float(vertex_index), 2))
-			);
-			float lighting = dot(normal_world, normalize(vec3(1, 2, 3)));
-			lighting = clamp(lighting, 0.1, 1.0);
-			fragment_color = vec4(lighting*albedo, 1);
+			//float b = dot(normal_world, normalize(create(-3, 1, -2)));
+			//gl_FragColor = vec4(max(0.0, dot(normal_world, vec3(0, 1, 0)))*sin(vertex_world), 1);
+			//gl_FragColor = vec4(0.5*normal_world + 0.5, 1);
+			gl_FragColor = vec4(sin(32.0*tex_world), 1, 1);
 		}
 	`
 	document.documentElement.style.overflow = 'hidden'
 	const canvas = document.createElement('canvas')
 	canvas.onclick = function() {
-		canvas.requestPointerLock({unadjustedMovement: true}) // this isnt default on moz
+		canvas.requestPointerLock()
 	}
 	canvas.style['image-rendering'] = 'pixelated'
 	document.documentElement.appendChild(canvas)
@@ -3949,11 +4156,21 @@ const mat4 = {}
 	const fragment_shader = gpu.create_shader(gl.FRAGMENT_SHADER, fragment_source)
 	const program = gpu.create_program(vertex_shader, fragment_shader)
 	program.use()
-	const camera_position = vec4.create(-128, 240, -3040, 0) // idk if this should be 0 or 1
+	const camera_position = vec3.create(-128, 240, -3040)
 	const camera_rotation = vec4.create(0, 0, 0, 1)
+	const frustum_uniform = program.get_uniform('frustum')
 	const camera_position_uniform = program.get_uniform('camera_position')
 	const camera_rotation_uniform = program.get_uniform('camera_rotation')
-	const frustum_uniform = program.get_uniform('frustum')
+	const axis_angle_to_quaternion = function(x, y, z) {
+		const l = sqrt(x*x + y*y + z*z)
+		const s = sin(0.5*l)
+		if (l > 0) {
+			return vec4.create(s*x/l, s*y/l, s*z/l, cos(0.5*l))
+		}
+		else {
+			return vec4.create(0, 0, 0, 1)
+		}
+	}
 	const keys_pressed = {}
 	onkeydown = function(event) {
 		keys_pressed[event.code] = true
@@ -3962,11 +4179,16 @@ const mat4 = {}
 		keys_pressed[event.code] = false
 	}
 	onmousemove = function(event) {
-		//debug.log(camera_rotation.copy().transform(vec4.from_axis_angle(-0.01, 0, 0)).dump())
-		//console.log(event.movementX, event.movementY)
-		camera_rotation.transform(vec4.from_axis_angle(-0.005*event.movementY, -0.005*event.movementX, 0))
+		camera_rotation.quaternion_multiply(axis_angle_to_quaternion(-0.005*event.movementY, -0.005*event.movementX, 0))
 	}
 	const main = function() {
+		/*
+		for (let i = 0; i < 100000; ++i) {
+			vertex_list.push(20*random())
+			vertex_list.push(20*random())
+			vertex_list.push(20*random())
+		}
+		*/
 		const map_model = model.construct(map_model_source)
 		const vertex_list = map_model[0]
 		{
@@ -4005,15 +4227,52 @@ const mat4 = {}
 		*/
 		const aspect_ratio_uniform = program.get_uniform('aspect_ratio')
 		let aspect_ratio
+		let frustum
 		onresize = function() {
 			canvas.width = innerWidth
 			canvas.height = innerHeight
-			gl.uniformMatrix4fv(frustum_uniform.get_location(), false, mat4.get_perspective(0.1, 10000).dump_transpose())
+			frustum = mat4.get_perspective(0.1, 10000)
 			aspect_ratio = innerHeight/innerWidth
 			aspect_ratio_uniform.send_float1(aspect_ratio)
 			gl.viewport(0, 0, innerWidth, innerHeight)
 		}
 		onresize()
+		const pi = 3.1415927
+		const tau = 6.28318531
+		const gx = 0
+		const gy = 0.002
+		const ac = -0.0005
+		const rad = 2
+		const r = 255
+		const g = 250
+		const b = 150
+		//context.lineWidth = 2*rad
+		const bullets = []
+		const draw_and_step_bullets = function(dt) {
+			for (let i = bullets.length; i--;) {
+				const [px, py] = bullets[i][0]
+				const [vx, vy] = bullets[i][1]
+				const k = ac*sqrt(vx*vx + vy*vy)
+				const x = gx + k*vx
+				const y = gy + k*vy
+				const dx = dt*(vx + 0.5*dt*x)
+				const dy = dt*(vy + 0.5*dt*y)
+				bullets[i][0] = [
+					px + dx,
+					py + dy,
+				]
+				bullets[i][1] = [
+					vx + dt*x,
+					vy + dt*y,
+				]
+				const l = 2*pi*rad/(pi + sqrt(dx*dx + dy*dy))
+				//context.strokeStyle = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + l + ')'
+				//context.beginPath()
+				//context.moveTo(px, py)
+				//context.lineTo(px + dx, py + dy)
+				//context.stroke()
+			}
+		}
 		gl.clearColor(0, 0, 0, 0)
 		gl.depthFunc(gl.LESS)
 		gl.enable(gl.CULL_FACE)
@@ -4025,36 +4284,21 @@ const mat4 = {}
 			t1 = 0.001*performance.now()
 			const dt = t1 - t0
 			adt += dt*(dt - adt)
-			const camera_direction = vec4.create(
+			const camera_direction = vec3.create(
 				(keys_pressed.KeyD && 1 || 0) - (keys_pressed.KeyA && 1 || 0),
 				(keys_pressed.KeyE && 1 || 0) - (keys_pressed.KeyQ && 1 || 0),
-				(keys_pressed.KeyS && 1 || 0) - (keys_pressed.KeyW && 1 || 0),
-				0
+				(keys_pressed.KeyS && 1 || 0) - (keys_pressed.KeyW && 1 || 0)
 			)
 			//const camera_rotation = vec4.create(0, 1, 0, 0).copy().exponentiate(0.0001*performance.now())
-			//camera_rotation.slerp(vec4.create(0, 0, 0, 1), dt)
-			{
-				const x = 0.0001*performance.now()
-				const y = 0.00001*performance.now()
-				const z = 0.0001*performance.now()
-				//camera_rotation.slerp(vec4.create(0, 0, 0, 1), 1)
-				//.transform(vec4.euler_angles_y2(0.5*y))
-				//.transform(vec4.euler_angles_x2(0.5*x))
-				//.transform(vec4.euler_angles_z2(0.5*z))
-				const [
-					xx, yx, zx,
-					xy, yy, zy,
-					xz, yz, zz
-				] = mat4.from_quaternion(camera_rotation)
-				//debug.log(x, )
-				//debug.log(y, atan2(-xz, xx))
-				//debug.log(z, atan2(-yx, xx))
-			}
-			camera_position.add(camera_rotation.copy().transform(camera_direction).transform(camera_rotation.copy().conjugate()).multiply_float(400*dt)) // idk how i feel about defining quaternion multiply as multiply
-			camera_position_uniform.send_float4_list(camera_position.dump())
+			camera_rotation.slerp(vec4.create(0, 0, 0, 1), dt)
+			camera_position.add_vec3((camera_direction.copy().multiply_quaternion(camera_rotation)).multiply_float(400*dt)) // idk how i feel about defining quaternion multiply as multiply
+			camera_position_uniform.send_float3_list(camera_position.dump())
 			camera_rotation_uniform.send_float4_list(camera_rotation.dump())
+			gl.uniformMatrix4fv(frustum_uniform.get_location(), false, frustum.dump_transpose())
 			gl.clear(gl.DEPTH_BUFFER_BIT)
-			gl.drawArrays(gl.TRIANGLES, 0, vertex_list.length/3) // what if it was a game where you fell out of the world? backrooms type shit
+			//gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT)
+			//gl.drawArrays(gl.TRIANGLES, 0, vertex_list.length/3)
+			gl.drawArrays(gl.TRIANGLES, 0, vertex_list.length/3)
 			requestAnimationFrame(update)
 		}
 		requestAnimationFrame(update)
@@ -4094,4 +4338,18 @@ const mat4 = {}
 		network.receive('fetch').connect(main)
 	})
 	*/
-}</script>
+}
+{
+	const imports = {
+		env: {
+			alert: alert
+		}
+	}
+	WebAssembly.instantiate(Uint8Array.from(atob('AGFzbQEAAAABCgJgAABgAn9/AX8DBAMAAQAFAwEAAgY/Cn8BQYCIBAt/AEGACAt/AEGACAt/AEGACAt/AEGAiAQLfwBBgAgLfwBBgIgEC38AQYCACAt/AEEAC38AQQELB7ABDQZtZW1vcnkCABFfX3dhc21fY2FsbF9jdG9ycwAAA2FkZAABBl9zdGFydAACDF9fZHNvX2hhbmRsZQMBCl9fZGF0YV9lbmQDAgtfX3N0YWNrX2xvdwMDDF9fc3RhY2tfaGlnaAMEDV9fZ2xvYmFsX2Jhc2UDBQtfX2hlYXBfYmFzZQMGCl9faGVhcF9lbmQDBw1fX21lbW9yeV9iYXNlAwgMX190YWJsZV9iYXNlAwkKkQEDAgALPQEGfyOAgICAACECQRAhAyACIANrIQQgBCAANgIMIAQgATYCCCAEKAIMIQUgBCgCCCEGIAUgBmohByAHDwtOAQh/I4CAgIAAIQBBECEBIAAgAWshAiACJICAgIAAQQEhA0ECIQQgAyAEEIGAgIAAIQUgAiAFNgIMQRAhBiACIAZqIQcgBySAgICAAA8LADwEbmFtZQEhAwARX193YXNtX2NhbGxfY3RvcnMBA2FkZAIGX3N0YXJ0BxIBAA9fX3N0YWNrX3BvaW50ZXIAJglwcm9kdWNlcnMBDHByb2Nlc3NlZC1ieQEFY2xhbmcGMTcuMC42ACwPdGFyZ2V0X2ZlYXR1cmVzAisPbXV0YWJsZS1nbG9iYWxzKwhzaWduLWV4dA==', imports), c => c.charCodeAt(0))).then(result => {
+		const instance = result.instance
+		instance.exports._start()
+	}).catch(error => {
+		console.error('Error instantiating WebAssembly module:', error)
+	})
+}
+</script>
