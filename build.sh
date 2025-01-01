@@ -1,4 +1,3 @@
-printf '' > main.html
-printf '<script>' >> main.html
-cat main.js >> main.html
-printf '</script>' >> main.html
+printf '<!doctype html><script>' > build/main.html
+cat src/main.js >> build/main.html
+printf '</script>' >> build/main.html

@@ -1106,120 +1106,6 @@ v -3104 -24 -4848
 v -3024 -24 -4840
 v -2992 -24 -4848
 v -2992 -24 -4840
-vn 1 0 0
-vn -1 0 0
-vn 0.388057 0 -0.9216354
-vn 0 0 -1
-vn -0.2676439 0 -0.9635179
-vn -0.824042 0 -0.5665289
-vn -0.9048187 0 0.425797
-vn -0.1414214 0 0.9899495
-vn 0.2576627 0 0.9662349
-vn 0.9938837 0 0.1104315
-vn 0.2060105 0 0.9785498
-vn 0.4061384 0 0.9138115
-vn 0.1020289 0 0.9947814
-vn 0 0 1
-vn 0.7071068 0 0.7071068
-vn 0.7071068 0 -0.7071068
-vn -0.3609941 0 0.9325681
-vn -0.1279713 0 0.9917778
-vn 0.5547002 0 -0.8320503
-vn -0.529999 0 -0.8479983
-vn -0.9397934 0 -0.3417431
-vn -0.5449883 0 -0.8384436
-vn 0.9958932 0 -0.09053575
-vn -0.9904923 0 0.1375684
-vn -0.3417431 0 0.9397934
-vn 0.3939193 0 -0.919145
-vn -0.2425356 0 0.9701425
-vn -0.2425356 0 -0.9701425
-vn -0.6 0 0.8
-vn 0.6 0 0.8
-vn 0.425797 0 -0.9048187
-vn 0.1871121 0 -0.9823385
-vn 0.1871121 0 0.9823385
-vn 0.4472136 0 0.8944272
-vn 0.4472136 0 -0.8944272
-vn 0 0 0.9999999
-vn 0 0 -0.9999999
-vn -0.7399401 0 -0.6726728
-vn -0.7399401 0 0.6726728
-vn 0 0 0
-vn 0.4472136 0 0.8944272
-vn -0.6 0 -0.8000001
-vn 0.8682431 0 0.4961389
-vn 0.9486833 0 0.3162277
-vn -0.9486833 0 0.3162277
-vn 0.5547002 0 -0.8320503
-vn -0.4472136 0 -0.8944272
-vn 0.8682431 0 -0.4961389
-vn 0.6782801 0 0.7348034
-vn -0.9161574 0 -0.4008189
-vn -0.5010363 0 0.8654262
-vn 0.578747 0 -0.8155071
-vn -0.9701425 0 -0.2425356
-vn 0.9161573 0 0.4008188
-vn 0.2747211 0 -0.961524
-vn -0.4472136 0 0.8944272
-vn -0.9363292 0 0.3511235
-vn -0.9363292 0 -0.3511235
-vn 0.8944272 0 0.4472136
-vn 0.8944271 0 0.4472136
-vn 0.7071068 0 -0.7071068
-vn 0.7071068 0 0.7071068
-vn 0.8944272 0 -0.4472136
-vn 0.8944271 0 -0.4472136
-vn 0.1788854 0 0.9838699
-vn 0.1788854 0 -0.9838699
-vn 0.4961389 0 0.8682431
-vn 0.4961389 0 -0.8682431
-vn -0.7071068 0 0.7071068
-vn -0.7071068 0 -0.7071068
-vn 0.9999999 0 0
-vn 0.5299989 0 0.8479983
-vn -0.9307516 0 -0.3656524
-vn 0.3162278 0 0.9486834
-vn -0.4788522 0 0.8778956
-vn -0.5547002 0 0.8320503
-vn -0.8741572 0 -0.4856429
-vn -0.9684929 0 -0.249041
-vn -0.7592566 0 -0.6507914
-vn 0.4472136 0 -0.8944272
-vn -0.3162278 0 0.9486833
-vn 0.9486833 0 -0.3162278
-vn -0.8 0 -0.6
-vn 0.9899494 0 0.1414213
-vn -0.9647638 0 0.2631174
-vn -0.3511235 0 -0.9363292
-vn -0.164399 0 0.986394
-vn -0.8320503 0 0.5547003
-vn 0.8944272 0 -0.4472136
-vn 0.961524 0 0.2747211
-vn 0.8 0 -0.6
-vn -0.9701425 0 -0.2425356
-vn 0.8364611 0 0.5480263
-vn -0.8637789 0 -0.503871
-vn 0.7592566 0 0.6507914
-vn 0.9701424 0 -0.2425356
-vn -0.9486834 0 0.3162278
-vn -0.6246951 0 -0.7808688
-vn 0.6246951 0 -0.7808688
-vn 0.9486833 0 -0.3162278
-vn -0.9486833 0 -0.3162278
-vn -0.2425356 0 0.9701425
-vn 0.3757051 0 0.9267393
-vn 0.6441357 0 -0.7649112
-vn 0.7966912 0 -0.6043864
-vn 0.3713907 0 0.9284766
-vn -0.7233555 0 0.6904758
-vn -0.3969111 0 -0.9178571
-vn -0.7071068 0 0.7071068
-vn -0.1065331 0 -0.9943092
-vn 0 1 0
-vn 0 -1 0
-vn 0 -0.9999999 0
-vn 0 0.9999999 0
 vt 2 -0.625
 vt 2 0
 vt 0 0
@@ -3302,26 +3188,30 @@ const debug = {}
 }
 const model = {}
 {
+	const sqrt = Math.sqrt
 	const build = [[], [], []]
 	const definitions = {}
+	const normal_list = []
+	const surface_list = []
+	const vertex_list = []
 	definitions['#'] = function() {}
 	definitions[''] = function() {}
 	definitions.mtllib = function() {}
 	definitions.usemtl = function() {}
 	definitions.o = function() {}
 	definitions.s = function() {}
-	const verts = []
 	definitions.v = function(vertex) {
-		verts.push([parseInt(vertex[0]), parseInt(vertex[1]), parseInt(vertex[2])])
+		vertex_list.push([parseInt(vertex[0]), parseInt(vertex[1]), parseInt(vertex[2])])
 	}
-	const texs = []
-	definitions.vt = function(tex) {
-		texs.push([parseInt(tex[0]), parseInt(tex[1])])
+	definitions.vt = function(surface) {
+		surface_list.push([parseInt(surface[0]), parseInt(surface[1])])
 	}
-	const norms = []
+	definitions.vn = function() {}
+	/*
 	definitions.vn = function(normal) {
-		norms.push([parseInt(normal[0]), parseInt(normal[1]), parseInt(normal[2])])
+		normal_list.push([parseInt(normal[0]), parseInt(normal[1]), parseInt(normal[2])])
 	}
+	*/
 	definitions.f = function(face) {
 		for (const pair_index in face) {
 			const [i, j, k] = face[pair_index].split('/')
@@ -3336,16 +3226,58 @@ const model = {}
 		const vc = face[2][0]
 		const tc = face[2][1]
 		const nc = face[2][2]
-		build[0].push(...verts[va], ...verts[vb], ...verts[vc])
-		build[1].push(...texs[ta], ...texs[tb], ...texs[tc])
-		build[2].push(...norms[na], ...norms[nb], ...norms[nc])
+		build[0].push(...vertex_list[va], ...vertex_list[vb], ...vertex_list[vc])
+		build[1].push(...surface_list[ta], ...surface_list[tb], ...surface_list[tc])
+		{
+			const ax = vertex_list[va][0]
+			const ay = vertex_list[va][1]
+			const az = vertex_list[va][2]
+			const bx = vertex_list[vb][0]
+			const by = vertex_list[vb][1]
+			const bz = vertex_list[vb][2]
+			const cx = vertex_list[vc][0]
+			const cy = vertex_list[vc][1]
+			const cz = vertex_list[vc][2]
+			let ux = az*cy + ay*bz - ay*cz + by*cz - by*az - bz*cy
+			let uy = az*bx - az*cx + bz*cx - bx*cz + ax*cz - ax*bz
+			let uz = ay*cx + ax*by - ax*cy + bx*cy - bx*ay - by*cx
+			const l = sqrt(ux*ux + uy*uy + uz*uz)
+			ux /= l
+			uy /= l
+			uz /= l
+			normal_list[na] = [ux, uy, uz]
+			normal_list[nb] = [ux, uy, uz]
+			normal_list[nc] = [ux, uy, uz]
+		}
+		build[2].push(...normal_list[na], ...normal_list[nb], ...normal_list[nc])
 		if (face.length === 4) {
 			const vd = face[3][0]
 			const td = face[3][1]
 			const nd = face[3][2]
-			build[0].push(...verts[vc], ...verts[vd], ...verts[va])
-			build[1].push(...texs[tc], ...texs[td], ...texs[ta])
-			build[2].push(...norms[nc], ...norms[nd], ...norms[na])
+			build[0].push(...vertex_list[vc], ...vertex_list[vd], ...vertex_list[va])
+			build[1].push(...surface_list[tc], ...surface_list[td], ...surface_list[ta])
+			{
+				const ax = vertex_list[vc][0]
+				const ay = vertex_list[vc][1]
+				const az = vertex_list[vc][2]
+				const bx = vertex_list[vd][0]
+				const by = vertex_list[vd][1]
+				const bz = vertex_list[vd][2]
+				const cx = vertex_list[va][0]
+				const cy = vertex_list[va][1]
+				const cz = vertex_list[va][2]
+				let ux = az*cy + ay*bz - ay*cz + by*cz - by*az - bz*cy
+				let uy = az*bx - az*cx + bz*cx - bx*cz + ax*cz - ax*bz
+				let uz = ay*cx + ax*by - ax*cy + bx*cy - bx*ay - by*cx
+				const l = sqrt(ux*ux + uy*uy + uz*uz)
+				ux /= l
+				uy /= l
+				uz /= l
+				normal_list[na] = [ux, uy, uz]
+				normal_list[nb] = [ux, uy, uz]
+				normal_list[nc] = [ux, uy, uz]
+			}
+			build[2].push(...normal_list[nc], ...normal_list[nd], ...normal_list[na])
 		}
 	}
 	model.construct = function(source) {
@@ -3356,6 +3288,9 @@ const model = {}
 			definitions[values[0]](values.splice(1))
 		}
 		timer.end()
+		build[0] = new Float32Array(build[0])
+		build[1] = new Float32Array(build[1])
+		build[2] = new Float32Array(build[2])
 		return build
 	}
 }
@@ -3461,10 +3396,16 @@ const gpu = {}
 		return self
 	}
 }
+const world = {}
+{
+	world.raycast = function(o, d) {
+	}
+}
 const audio_player = {}
 {
+	// c# d# f# g# a#
 	const pow = Math.pow
-	function note_to_frequency(note) {
+	function get_frequency_from_note(note) {
 		const note_map = {
 			'C': 261.63,
 			'C#': 277.18,
@@ -3495,7 +3436,7 @@ const audio_player = {}
 	const easy_does_it = 'data:audio/mpeg;base64,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'
 	const pi = 3.1415927
 	const total_channels = 1
-	const duration = 0.5
+	const duration = 0.4
 	const sin = Math.sin
 	const exp = Math.exp
 	const audio_context = new AudioContext()
@@ -3507,8 +3448,7 @@ const audio_player = {}
 		self.step = function(dt) {
 		}
 		self.play_note = function(note) {
-			const frequency = note_to_frequency(note)
-			/*
+			const frequency = get_frequency_from_note(note)
 			const buffer = audio_context.createBuffer(total_channels, total_samples, sample_rate)
 			const channel_data = buffer.getChannelData(0)
 			if (random() > 0.7) {
@@ -3522,21 +3462,19 @@ const audio_player = {}
 					const t = i/sample_rate
 					channel_data[i] = 0.1*(2*pi*frequency*t%1)*exp(-10*t)
 				}
-				continue
+				/*
 				for (let i = 0; i < total_samples; i++) {
 					const t = i/sample_rate
 					channel_data[i] = 0.1*(2*pi*frequency*(t + 0.0005*sin(80*t))%1)*exp(-10*t)
 				}
+				*/
 			}
-			*/
-			/*
 			const source = audio_context.createBufferSource()
 			source.buffer = buffer
 			source.connect(audio_context.destination)
 			source.start()
-			*/
 			//play_audio_at_pitch(idk_sound, 1/440*frequency)
-			play_audio_at_pitch(soft_middle, 1/440*frequency)
+			//play_audio_at_pitch(easy_does_it, 1/440*frequency)
 		}
 		const random = Math.random
 		const floor = Math.floor
@@ -3600,7 +3538,7 @@ const audio_player = {}
 		let i = 0
 		setInterval(function() {
 			const key = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'][i%12]
-			play_audio_at_pitch(drum, 1/440*note_to_frequency(key + (3 + floor(i/12)%4)))
+			play_audio_at_pitch(drum, 1/440*get_frequency_from_note(key + (3 + floor(i/12)%4)))
 			++i;
 		}, 500)
 	}
@@ -3616,7 +3554,7 @@ const audio_player = {}
 		let i = 0
 		setInterval(function() {
 			for (const j in sequence[i]) {
-				play_audio_at_pitch(soft_middle, 1/440*note_to_frequency(sequence[i][j]))
+				play_audio_at_pitch(soft_middle, 1/440*get_frequency_from_note(sequence[i][j]))
 			}
 			play_audio_at_pitch(drum, 1)
 			++i
@@ -3647,12 +3585,13 @@ const signal = {}
 }
 const vec4 = {}
 {
-	const sqrt = Math.sqrt
-	const cos = Math.cos
-	const sin = Math.sin
 	const acos = Math.acos
+	const cos = Math.cos
 	const log = Math.log
 	const random = Math.random
+	const sign = Math.sign
+	const sin = Math.sin
+	const sqrt = Math.sqrt
 	const create = function(x, y, z, w) {
 		const self = {}
 		self.copy = function() {
@@ -3675,7 +3614,7 @@ const vec4 = {}
 			return self
 		}
 		self.dump_diagonal = function() {
-			return [hyp*x, hyp*y, hyp*z, hyp*w]
+			return [hypotenuse*x, hypotenuse*y, hypotenuse*z, hypotenuse*w]
 		}
 		self.cross_imaginary = function(b) {
 			const [bx, by, bz, bw] = b.dump()
@@ -3696,7 +3635,7 @@ const vec4 = {}
 		self.exponentiate = function(n) {
 			const l = sqrt(x*x + y*y + z*z)
 			if (l > 0) {
-				const t = n*acos(w)
+				const t = n*atan2(l, w)
 				const s = sin(t)/l
 				x *= s
 				y *= s
@@ -3713,12 +3652,33 @@ const vec4 = {}
 			return self
 		}
 		self.slerp = function(b, n) {
-			if (self.dot(b) < 0) {
-				self.transform(b.copy().transform(self.copy().negate().conjugate()).exponentiate(n))
+			let [ax, ay, az, aw] = self.dump()
+			let [bx, by, bz, bw] = b.dump()
+			if (ax*bx + ay*by + az*bz + aw*bw < 0) {
+				ax = -ax
+				ay = -ay
+				az = -az
+				aw = -aw
 			}
-			else {
-				self.transform(b.copy().transform(self.copy().conjugate()).exponentiate(n))
+			const x0 = aw*bx - ax*bw + ay*bz - az*by
+			const y0 = aw*by - ax*bz - ay*bw + az*bx
+			const z0 = aw*bz + ax*by - ay*bx - az*bw
+			const w0 = aw*bw + ax*bx + ay*by + az*bz
+			const l = sqrt(x0*x0 + y0*y0 + z0*z0)
+			if (l > 0) { // this is stupid but it works for now
+				const t = n*atan2(l, w0)
+				const s = sin(t)/l
+				bx = s*x0
+				by = s*y0
+				bz = s*z0
+				bw = cos(t)
+				x = aw*bx + ax*bw - ay*bz + az*by
+				y = aw*by + ax*bz + ay*bw - az*bx
+				z = aw*bz - ax*by + ay*bx + az*bw
+				w = aw*bw - ax*bx - ay*by - az*bz
 			}
+			// why doesnt this fucking work
+			//self.transform(b.copy().transform(self.copy().multiply_float(sign(self.dot(b))).conjugate()).exponentiate(n))
 			return self
 		}
 		self.add = function(b) {
@@ -3739,54 +3699,46 @@ const vec4 = {}
 		return self
 	}
 	vec4.create = create
-	const hyp = 1.41421356
+	const hypotenuse = 1.41421356
 	const tau = 6.28318531
-	vec4.euler_angles_x2 = function(t) {
-		return vec4.create(sin(t), 0, 0, cos(t))
+	vec4.euler_x = function(t) {
+		return vec4.create(sin(0.5*t), 0, 0, cos(0.5*t))
 	}
-	vec4.euler_angles_y2 = function(t) {
-		return vec4.create(0, sin(t), 0, cos(t))
+	vec4.euler_y = function(t) {
+		return vec4.create(0, sin(0.5*t), 0, cos(0.5*t))
 	}
-	vec4.euler_angles_z2 = function(t) {
-		return vec4.create(0, 0, sin(t), cos(t))
+	vec4.euler_z = function(t) {
+		return vec4.create(0, 0, sin(0.5*t), cos(0.5*t))
 	}
-	const mat = function(m) {
-		const [xx, yx, zx, xy, yy, zy, xz, yz, zz] = m.dump()
-		if (xx + yy + zz > 0) {
-			const s = 0.5/sqrt(1 + xx + yy + zz)
-			x = s*(xy - yx)
-			y = s*(yz - zy)
-			z = s*(zx - xz)
-			w = 0.25/s
-		}
-		else if (xx > yy && xx > zz) {
-			const s = 0.5/sqrt(1 + xx - yy - zz)
-			x = s*(zx + xz)
-			y = 0.25/s
-			z = s*(yx + xy)
-			w = s*(yz - zy)
-		}
-		else if (yy > zz) {
-			const s = 0.5/sqrt(1 - xx + yy - zz)
-			x = s*(zy + yz)
-			y = s*(yx + xy)
-			z = 0.25/s
-			w = s*(zx - xz)
-		}
-		else {
-			const s = 0.5/sqrt(1 - xx - yy + zz)
-			x = 0.25/s
-			y = s*(zx + xz)
-			z = s*(zy + yz)
-			w = s*(xy - yx)
-		}
+	const asin = Math.asin
+	const atan2 = Math.atan2
+	vec4.get_euler_yxz_from_quaternion = function(q) {
+		const [x, y, z, w] = q.dump()
+		const rx = asin(2*(w*x - y*z))
+		const ry = atan2(2*(x*z + w*y), 1 - 2*(x*x + y*y))
+		const rz = atan2(2*(x*y + w*z), 1 - 2*(x*x + z*z))
+		return [rx, ry, rz]
 	}
+	/*
+	vec4.quaternion_from_euler_yx = function(q) {
+		const [x, y, z, w] = q.dump()
+		const d = w*w + x*x + y*y + z*z
+		const [xx, yx, zx] = [(w*w + x*x - y*y - z*z)/d, 2*(x*y - w*z)/d, 2*(w*y + x*z)/d]
+		const [xy, yy, zy] = [2*(x*y + w*z)/d, (w*w - x*x + y*y - z*z)/d, 2*(y*z - w*x)/d]
+		const [xz, yz, zz] = [2*(x*z - w*y)/d, 2*(w*x + y*z)/d, (w*w - x*x - y*y + z*z)/d]
+		const kc = xx*xx + xz*xz
+		if (kc === 0) {
+			return [0, atan2(zx, zz), 0]
+		}
+		return [atan2(xx*yz - xz*yx, xx*zz - xz*zx), atan2(-xz, xx)]
+	}
+	*/
 	const look = function(b) {
 		const [bx, by, bz, bw] = b.dump()
-		hyp*(y*bz - z*by)
-		hyp*(z*bx - x*bz)
-		hyp*(x*by - y*bz)
-		hyp
+		hypotenuse*(y*bz - z*by)
+		hypotenuse*(z*bx - x*bz)
+		hypotenuse*(x*by - y*bz)
+		hypotenuse
 	}
 	const axis_angle = function(v) {
 		const [x, y, z] = v.dump()
@@ -3852,12 +3804,9 @@ const mat4 = {}
 			0, 0, -1, 0
 		)
 	}
-	mat4.from_quaternion = function(q) {
-		const [x, y, z, w] = q.dump_diagonal()
-		return [w*w + x*x - 1, x*y - z*w, x*z + y*w, x*y + z*w, w*w + y*y - 1, y*z - x*w, x*z - y*w, y*z + x*w, w*w + z*z - 1]
-	}
 	mat4.create = create
 }
+const game = {}
 {
 	const random = Math.random
 	const sqrt = Math.sqrt
@@ -3867,10 +3816,10 @@ const mat4 = {}
 		precision lowp float;
 		precision lowp int;
 		flat out int vertex_index;
-		in vec2 tex;
+		in vec2 surface;
 		in vec3 normal;
 		in vec3 vertex;
-		out vec2 tex_world;
+		out vec2 surface_world;
 		out vec3 normal_world;
 		out vec3 vertex_relative;
 		out vec3 vertex_world;
@@ -3896,10 +3845,10 @@ const mat4 = {}
 		}
 		void main() {
 			vertex_world = vertex;
-			tex_world = tex;
+			surface_world = surface;
 			normal_world = normal;
 			vertex_relative = transform(conjugate(camera_rotation), vertex - camera_position.xyz);
-			gl_Position = frustum*vec4(vertex_relative, 1);
+			gl_Position = frustum*vec4(vertex_relative, 1.0);
 			vertex_index = gl_VertexID;
 		}
 	`
@@ -3907,29 +3856,118 @@ const mat4 = {}
 		precision lowp float;
 		precision lowp int;
 		flat in int vertex_index;
-		in vec2 tex_world;
+		in vec2 surface_world;
 		in vec3 normal_world;
 		in vec3 vertex_relative;
 		in vec3 vertex_world;
 		out vec4 fragment_color;
-		float random(vec2 c) {
+		uniform vec4 camera_position;
+		float hash(vec2 c) {
 			return fract(sin(dot(c, vec2(12.9898, 78.233)))*43758.5453);
 		}
-		void main() {
-			float lightness = dot(tex_world, tex_world);
-			//color = vec4(sin(20.0*lightness + float(vertex_index)), 0, 0, 1);
-			//fragment_color = vec4(1, 0, 0, 1);
-			//float variability = 0.5 + 0.2*fract(0.65446*float(vertex_index));
-			vec3 albedo = vec3(
-				random(vec2(float(vertex_index), 0)),
-				random(vec2(float(vertex_index), 1)),
-				random(vec2(float(vertex_index), 2))
+		vec3 get_filmic_tone_mapping(vec3 color) {
+			color = max(vec3(0.0), color - vec3(0.004));
+			color = (color*(6.2*color + 0.5))/(color*(6.2*color + 1.7) + 0.06);
+			return color;
+		}
+		vec3 get_rgb_from_hsv(vec3 c) {
+			vec4 K = vec4(1.0, 2.0/3.0, 1.0/3.0, 3.0);
+			vec3 p = abs(fract(c.xxx + K.xyz)*6.0 - K.www);
+			return c.z*mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+		}
+		float linear_inverse(float p, float a, float b) {
+			return (p - a)/(b - a);
+		}
+		vec3 get_rgb_from_wavelength(float lambda, float gamma, float intensity_max) {
+			float factor;
+			float R, G, B;
+			if ((lambda >= 380.0) && (lambda < 440.0)) {
+				R = linear_inverse(lambda, 440.0, 380.0);
+				G = 0.0;
+				B = 1.0;
+			}
+			else if ((lambda >= 440.0) && (lambda < 490.0)) {
+				R = 0.0;
+				G = linear_inverse(lambda, 440.0, 490.0);
+				B = 1.0;
+			}
+			else if ((lambda >= 490.0) && (lambda < 510.0)) {
+				R = 0.0;
+				G = 1.0;
+				B = linear_inverse(lambda, 510.0, 490.0);
+			}
+			else if ((lambda >= 510.0) && (lambda < 580.0)) {
+				R = linear_inverse(lambda, 510.0, 580.0);
+				G = 1.0;
+				B = 0.0;
+			}
+			else if ((lambda >= 580.0) && (lambda < 645.0)) {
+				R = 1.0;
+				G = linear_inverse(lambda, 645.0, 580.0);
+				B = 0.0;
+			}
+			else if ((lambda >= 645.0) && (lambda < 781.0)) {
+				R = 1.0;
+				G = 0.0;
+				B = 0.0;
+			}
+			else {
+				R = 0.0;
+				G = 0.0;
+				B = 0.0;
+			}
+			// let the intensity fall off near the vision limits;
+			if ((lambda >= 380.0) && (lambda < 420.0)) {
+				factor = 0.3 + 0.7*linear_inverse(lambda, 380.0, 420.0);
+			}
+			else if ((lambda >= 420.0) && (lambda < 701.0)) {
+				factor = 1.0;
+			}
+			else if ((lambda >= 701.0) && (lambda < 781.0)) {
+				factor = 0.3 + 0.7*(780.0 - lambda)/(780.0 - 700.0);
+			}
+			else {
+				factor = 0.0;
+			}
+			return vec3(
+				intensity_max*pow(R*factor, gamma),
+				intensity_max*pow(G*factor, gamma),
+				intensity_max*pow(B*factor, gamma)
 			);
-			float lighting = dot(normal_world, normalize(vec3(1, 2, 3)));
-			lighting = clamp(lighting, 0.1, 1.0);
-			fragment_color = vec4(lighting*albedo, 1);
+		}
+		void main() {
+			/*
+			float lightness = dot(surface_world, surface_world);
+			color = vec4(sin(20.0*lightness + float(vertex_index)), 0.0, 0.0, 1);
+			fragment_color = vec4(1.0, 0.0, 0.0, 1.0);
+			float variability = 0.5 + 0.2*fract(0.65446*float(vertex_index));
+			*/
+			/*
+			vec3 albedo = vec3(
+				hash(vec2(float(vertex_index), 0.0)),
+				hash(vec2(float(vertex_index), 1.0)),
+				hash(vec2(float(vertex_index), 2.0))
+			);
+			*/
+			float intensity = 4.0*inversesqrt(length(vertex_relative));
+			float incidence = dot(normal_world, normalize(camera_position.xyz - vertex_world));
+			float smoothness = 5.0*hash(vec2(float(vertex_index), 1.0));
+			float reflectance = incidence/(incidence*(1.0 - smoothness) + smoothness); // https://learnopengl.com/pbr/theory
+			float luminance = intensity*reflectance;//*(0.2*albedo.r + 0.7*albedo.g + 0.1*albedo.b);
+			float eye = exp(-luminance);
+			vec3 color = get_rgb_from_hsv(vec3(
+				hash(vec2(float(vertex_index), 12.0)),
+				eye, // rod_sensitivity^-luminance
+				1.0 - eye*eye // 1 - cone_sensitivity^-luminance
+			));
+			//color = get_filmic_tone_mapping(color);
+			fragment_color = vec4(color, 1.0);
+			//float wavelength = 380.0 + 370.0*hash(vec2(float(vertex_index), 8.0));
+			//fragment_color = vec4(get_rgb_from_wavelength(wavelength, 0.001, 1.0), 1.0);
 		}
 	`
+	const giygas_image = 'data:image/jpeg;base64,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'
+	document.documentElement.style['background-image'] = 'url(' + giygas_image + ')'
 	document.documentElement.style.overflow = 'hidden'
 	const canvas = document.createElement('canvas')
 	canvas.onclick = function() {
@@ -3949,22 +3987,29 @@ const mat4 = {}
 	const fragment_shader = gpu.create_shader(gl.FRAGMENT_SHADER, fragment_source)
 	const program = gpu.create_program(vertex_shader, fragment_shader)
 	program.use()
-	const camera_position = vec4.create(-128, 240, -3040, 0) // idk if this should be 0 or 1
+	const camera_position = vec4.create(-1969.492553183072, 8.54356497043036, -3292.7346201121695, 0) // idk if this should be 0 or 1
 	const camera_rotation = vec4.create(0, 0, 0, 1)
 	const camera_position_uniform = program.get_uniform('camera_position')
 	const camera_rotation_uniform = program.get_uniform('camera_rotation')
 	const frustum_uniform = program.get_uniform('frustum')
+	game.capture_camera = function() {
+		return [camera_position.dump(), camera_rotation.dump()]
+	}
 	const keys_pressed = {}
 	onkeydown = function(event) {
+		if (event.key === 'F12') {
+			event.preventDefault()
+		}
 		keys_pressed[event.code] = true
 	}
 	onkeyup = function(event) {
 		keys_pressed[event.code] = false
 	}
 	onmousemove = function(event) {
-		//debug.log(camera_rotation.copy().transform(vec4.from_axis_angle(-0.01, 0, 0)).dump())
-		//console.log(event.movementX, event.movementY)
-		camera_rotation.transform(vec4.from_axis_angle(-0.005*event.movementY, -0.005*event.movementX, 0))
+		camera_rotation.transform(vec4.from_axis_angle(-2/innerHeight*event.movementY, -2/innerHeight*event.movementX, 0)) // move pixels
+	}
+	oncontextmenu = function(event) {
+		event.preventDefault()
 	}
 	const main = function() {
 		const map_model = model.construct(map_model_source)
@@ -3972,26 +4017,29 @@ const mat4 = {}
 		{
 			const vertex_buffer = gpu.create_buffer()
 			vertex_buffer.bind(gl.ARRAY_BUFFER)
-			gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertex_list), gl.STATIC_DRAW)
+			gl.bufferData(gl.ARRAY_BUFFER, vertex_list, gl.STATIC_DRAW)
 			const vertex_attribute = program.get_attribute('vertex')
 			vertex_attribute.enable_vertex_attribute_array()
 			gl.vertexAttribPointer(vertex_attribute.get_location(), 3, gl.FLOAT, false, 0, 0)
 		}
 		{
-			const tex_buffer = gpu.create_buffer()
-			tex_buffer.bind(gl.ARRAY_BUFFER)
-			gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(map_model[1]), gl.STATIC_DRAW)
-			const tex_attribute = program.get_attribute('tex')
-			tex_attribute.enable_vertex_attribute_array()
-			gl.vertexAttribPointer(tex_attribute.get_location(), 2, gl.FLOAT, false, 0, 0)
+			const surface_buffer = gpu.create_buffer()
+			surface_buffer.bind(gl.ARRAY_BUFFER)
+			gl.bufferData(gl.ARRAY_BUFFER, map_model[1], gl.STATIC_DRAW)
+			const surface_attribute = program.get_attribute('surface')
+			surface_attribute.enable_vertex_attribute_array()
+			gl.vertexAttribPointer(surface_attribute.get_location(), 2, gl.FLOAT, false, 0, 0)
 		}
 		{
 			const normal_buffer = gpu.create_buffer()
 			normal_buffer.bind(gl.ARRAY_BUFFER)
-			gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(map_model[2]), gl.STATIC_DRAW)
+			gl.bufferData(gl.ARRAY_BUFFER, map_model[2], gl.STATIC_DRAW)
 			const normal_attribute = program.get_attribute('normal')
 			normal_attribute.enable_vertex_attribute_array()
 			gl.vertexAttribPointer(normal_attribute.get_location(), 3, gl.FLOAT, false, 0, 0)
+		}
+		const raycast = function(o, u) {
+			let z = 1/0
 		}
 		/*
 		const color_buffer = gl.createRenderbuffer()
@@ -4000,7 +4048,7 @@ const mat4 = {}
 		gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.RENDERBUFFER, color_buffer)
 		// after rendering to the framebuffer...
 		// read pixel data from the renderbuffer into a _typed array
-		var pixel_data = new Uint8Array(innerWidth*innerHeight*4) // rgba format
+		const pixel_data = new Uint8Array(innerWidth*innerHeight*4) // rgba format
 		gl.readPixels(0, 0, innerWidth, innerHeight, gl.RGBA, gl.UNSIGNED_BYTE, pixel_data)
 		*/
 		const aspect_ratio_uniform = program.get_uniform('aspect_ratio')
@@ -4024,35 +4072,26 @@ const mat4 = {}
 			const t0 = t1
 			t1 = 0.001*performance.now()
 			const dt = t1 - t0
-			adt += dt*(dt - adt)
+			adt += 0.01*(dt - adt)
 			const camera_direction = vec4.create(
 				(keys_pressed.KeyD && 1 || 0) - (keys_pressed.KeyA && 1 || 0),
 				(keys_pressed.KeyE && 1 || 0) - (keys_pressed.KeyQ && 1 || 0),
 				(keys_pressed.KeyS && 1 || 0) - (keys_pressed.KeyW && 1 || 0),
 				0
 			)
-			//const camera_rotation = vec4.create(0, 1, 0, 0).copy().exponentiate(0.0001*performance.now())
-			//camera_rotation.slerp(vec4.create(0, 0, 0, 1), dt)
 			{
-				const x = 0.0001*performance.now()
-				const y = 0.00001*performance.now()
-				const z = 0.0001*performance.now()
-				//camera_rotation.slerp(vec4.create(0, 0, 0, 1), 1)
-				//.transform(vec4.euler_angles_y2(0.5*y))
-				//.transform(vec4.euler_angles_x2(0.5*x))
-				//.transform(vec4.euler_angles_z2(0.5*z))
-				const [
-					xx, yx, zx,
-					xy, yy, zy,
-					xz, yz, zz
-				] = mat4.from_quaternion(camera_rotation)
-				//debug.log(x, )
-				//debug.log(y, atan2(-xz, xx))
-				//debug.log(z, atan2(-yx, xx))
+				const exp = Math.exp
+				const [rx, ry] = vec4.get_euler_yxz_from_quaternion(camera_rotation)
+				const nearest = vec4.create(0, 0, 0, 1)
+				.transform(vec4.euler_y(ry))
+				.transform(vec4.euler_x(rx))
+				camera_rotation.slerp(nearest, 1 - exp(-8*dt)) // approach 1
 			}
-			camera_position.add(camera_rotation.copy().transform(camera_direction).transform(camera_rotation.copy().conjugate()).multiply_float(400*dt)) // idk how i feel about defining quaternion multiply as multiply
+			raycast(camera_position, vec4.create(0, 10, 0, 1))
+			camera_position.add(camera_rotation.copy().transform(camera_direction).transform(camera_rotation.copy().conjugate()).multiply_float(500*dt)) // idk how i feel about defining quaternion multiply as multiply
 			camera_position_uniform.send_float4_list(camera_position.dump())
 			camera_rotation_uniform.send_float4_list(camera_rotation.dump())
+			//gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 			gl.clear(gl.DEPTH_BUFFER_BIT)
 			gl.drawArrays(gl.TRIANGLES, 0, vertex_list.length/3) // what if it was a game where you fell out of the world? backrooms type shit
 			requestAnimationFrame(update)
