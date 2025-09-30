@@ -1,0 +1,32 @@
+[Notes]
+	The thing should describe itself so well that everything else just works around it with minimal intrusion. So nothing externally should assign to it.
+This means things might need to overdescribe themselves, but maybe that's worth it?
+It's either overdescribe oneself or have everything else need to try making it work with said thing.
+Overdescriving oneself seems more congruent. And we should be maximizing congruency.
+
+[Goals]
+- Text-to-speech
+- Collision
+- Characters with bones and IK
+- Walking sounds
+- Proper music with music theory things
+- Audio occlusion
+- Text on screen, like subtitles and shit
+- Cutscenes with camera animations
+- Shadows
+- Do peer-to-peer networking for multiplayer
+- Motion blur
+- Snow/rain/sparks/etc.
+- Convert to singletons and use env.
+- Airplanes
+- Fog
+- Characters models
+- Gun models
+- Simple stupid animations
+- Make fov-proportional mouse sensitivity. (1 dot = 1 pixel @ center)
+- Do the weird 2D texture shader stuff that the TV show "Chowder" did on CN.
+- Debug drawing in 3D
+- Enumerate types so we don't need to store strings in objects.
+- What if it was a game where you fell out of the world? backrooms type shit
+- Slow motion like superhot
+- Momentum jumping (Space controls leg's extend/unextend)

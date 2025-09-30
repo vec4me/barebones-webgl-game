@@ -1,0 +1,1 @@
+fd . -e py -e zs -e sh | entr -r python ./build.py
