@@ -3,14 +3,22 @@ input_module := {}
 	fn input_module.link(env) {
 		signal := env.require("signal")
 		vector := env.require("vector")
+		debug := env.require("debug")
 		// require("thread")
 		keys_down := {}
 		input_module.move = signal.make()
 		onkeydown = fn(event) {
+
 			if event.key == "F12" {
 				event.prevent_default()
 			}
 			keys_down[event.code] = true
+
+            teller_module.init();
+
+			if event.key == "0" {
+               debug.panel(env.param);
+			}
 		}
 		onkeyup = fn(event) {
 			keys_down[event.code] = false
@@ -23,6 +31,7 @@ input_module := {}
 			event.prevent_default()
 		}
 		fn input_module.intent() {
+
 			return vector.make(
 				(keys_down["KeyD"] && 1 || 0) - (keys_down["KeyA"] && 1 || 0),
 				(keys_down["KeyE"] && 1 || 0) - (keys_down["KeyQ"] && 1 || 0),
